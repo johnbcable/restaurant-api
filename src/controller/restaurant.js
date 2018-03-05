@@ -5,13 +5,13 @@ import Restaurant from '../model/restaurant';
 export default ({ config, db} ) => {
   let api = Router();
 
-  // /v1/restaurant/address
+  // /v1/restaurant/add
   api.post('/add', (res, req) => {
-    let newRest = new Reesturant();
+    let newRest = new Restaurant();
     newwRest.name = req.body.name;
 
     // save method is a mongosse method
-    newRest.save(err, => {
+    newRest.save(err => {
       if (err) {
         res.send(err);
       }

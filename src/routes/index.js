@@ -1,7 +1,7 @@
 import express from 'express';
 import config from './config';
 import middleware from '../middleware';
-import initialiseDb from '../db';
+import initializeDb from '../db';
 import restaurant from '../controller/restaurant'
 
 let router = express();

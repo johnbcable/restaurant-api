@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-let Schema = mongoose.Schema();
+let Schema = mongoose.Schema;
 
 let restaurantSchema = new Schema({
   name: String
