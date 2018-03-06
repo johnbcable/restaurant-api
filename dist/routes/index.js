@@ -29,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var router = (0, _express2.default)();
 
 // Connect to the DB
-initializeDb(function (db) {
+(0, _db2.default)(function (db) {
 
   // internal Middleware
   router.use((0, _middleware2.default)({

@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { Router } from 'express';
 import Restaurant from '../model/restaurant';
+import bodyParser from 'body-parser';
 
 export default ({ config, db} ) => {
   let api = Router();
@@ -11,7 +12,7 @@ export default ({ config, db} ) => {
     newwRest.name = req.body.name;
 
     // save method is a mongosse method
-    newRest.save(err => {
+    newRest.save(function(err) {
       if (err) {
         res.send(err);
       }
