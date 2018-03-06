@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import config from './config';
 
 export default callback => {
-  let db = mongoose.connect('mongodb://localhost:27017');
+  let db = mongoose.connect(config.mongourl);
   callback(db);
 }

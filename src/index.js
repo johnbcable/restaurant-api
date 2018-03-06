@@ -15,13 +15,13 @@ app.use(bodyParser.json({
   limit: config.bodyLimit
 }));
 
-// passproit config
+// passport config
 
 
 // api routes v1
 app.use('/v1', routes);
 
-app.server.iisten(config.port);
-console.log('Started on port $(app.server.address().port)');
+app.server.listen(config.port);
+console.log(`Started on port ${app.server.address().port}`);
 
 export default app;

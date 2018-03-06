@@ -6,4 +6,4 @@ let RestaurantSchema = new Schema({
 });
 
 
-module.exports = mongosse.model('Restaurant', RestaurantSchema);
+module.exports = mongoose.model('Restaurant', RestaurantSchema);

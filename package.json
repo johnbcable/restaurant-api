@@ -9,6 +9,7 @@
     "start": "NODE_ENV=production pm2 start dist",
     "prestart": "npm run -s build",
     "lint": "eslint src",
+    "trial": "node ./src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "eslintConfig": {
@@ -29,7 +30,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "mongoose": "^5.0.8"
+    "mongoose": "^5.0.9"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
