@@ -6,17 +6,29 @@ import bodyParser from 'body-parser';
 export default ({ config, db} ) => {
   let api = Router();
 
-  // /v1/restaurant/add
+  // CRUD - Create, Read, Update and Delete
+  // /v1/restaurant/add  -  Create
   api.post('/add', (req, res) => {
     let newRest = new Restaurant();
-    newwRest.name = req.body.name;
+    console.log(`${req.body.name}`);
+    newRest.name = req.body.name;
 
     // save method is a mongosse method
-    newRest.save(function(err) {
+    newRest.save(err => {
       if (err) {
         res.send(err);
       }
       res.json({message: 'Restaurant saved successfully'});
+    });
+  });
+
+  // /v1/restaurant/  -  Read
+  api.get('/', (req, res) => {
+    Restaurant.find({}, (err, restaurants) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(restaurants);
     });
   });
 
