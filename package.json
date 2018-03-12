@@ -1,5 +1,5 @@
 {
-  "name": "restaurant-api",
+  "name": "foodtruck-api",
   "version": "0.0.1",
   "description": "Restaurant API for Develope a RESTful API course",
   "main": "dist",
