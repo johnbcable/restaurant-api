@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { Router } from 'express';
 import FoodTruck from '../model/foodtruck';
+import Review from '../model/review';
 
 export default ({ config, db} ) => {
   let api = Router();
@@ -14,7 +15,7 @@ export default ({ config, db} ) => {
     newFoodTruck.foodtype = req.body.foodtype;
     newFoodTruck.avgcost = req.body.avgcost;
     newFoodTruck.geometry.coordinates = req.body.geometry.coordinates;
-    
+
     // save method is a mongoose method
     newFoodTruck.save(err => {
       if (err) {
@@ -45,6 +46,7 @@ export default ({ config, db} ) => {
   });
 
   // /v1/foodtruck/:id    Update
+  // Needs work to include other data items
   api.put('/:id', (req, res) => {
     FoodTruck.findById(req.params.id, (err, foodtruck) => {
       if (err) {
@@ -64,6 +66,7 @@ export default ({ config, db} ) => {
   });
 
   // /v1/foodtruck/:id  -  Delete one foodtruck
+  // Need to also make sure and remove reviews as well
     api.delete('/:id', (req, res) => {
     FoodTruck.remove( {
       _id:  req.params.id
@@ -104,6 +107,17 @@ export default ({ config, db} ) => {
     });
   });
 });
+
+// get reviews for a specific FoodTruck
+// '/v1/foodtruck/reviews/:id'
+api.get('/reviews/:id', (req, res) => {
+  Review.find({foodtruck: req.params.id}, (err, reviews) => {
+    if (err) {
+      res.send(err);
+    }
+    res.json(reviews);
+  })
+})
 
   return api;
 }
